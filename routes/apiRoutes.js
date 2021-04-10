@@ -1,7 +1,5 @@
 // require variables
 const noteData = require('../data/noteData');
-const fs = require('fs');
-const uniqid = require('uniqid');
 
 // export app routes
 module.exports = (app) => {
@@ -11,22 +9,22 @@ module.exports = (app) => {
      // post notes from user input
      app.post('/api/notes', (req, res) => {
           // add an id to the note
-          req.body.id = uniqid();
+          let id = noteData.length + 1
+          req.body.id = parseInt(id);
           // push note to data array
           noteData.push(req.body);
+          // end response
           res.json(true);
      })
 
      // delete notes
-     app.delete('api/notes/:id', (req, res) => {
-          // filter notes that do not match the clicked 
-          let filteredNotes = noteData.find(({id}) => id === req.params.id);
-          console.log(filteredNotes);
-          fs.writeFile('./db/db.json', JSON.stringify(filteredNotes), function (err) {
-               if(err) {
-                    throw err;
-               }
-          })
-          res.json({ ok: true });
+     app.delete('/api/notes/:id', (req, res) => {
+          // identify the selected id
+          let note = noteData.find(({id}) => id === JSON.parse(req.params.id));
+          // remove from data array
+          noteData.splice(noteData.indexOf(note), 1);
+          // end response
+          res.end();
+
      })
 }
