@@ -7,17 +7,19 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kelsie-c/note-taker.git"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [],
   "bugs": {
     "url": "https://github.com/kelsie-c/note-taker/issues"
   },
-  "homepage": "https://github.com/kelsie-c/note-taker#readme",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "homepage": "https://github.com/kelsie-c/note-taker#readme"
 }
