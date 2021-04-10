@@ -9,7 +9,7 @@ module.exports = (app) => {
      // post notes from user input
      app.post('/api/notes', (req, res) => {
           // add an id to the note
-          let id = noteData.length + 1
+          let id = noteData.length + 1;
           req.body.id = parseInt(id);
           // push note to data array
           noteData.push(req.body);
